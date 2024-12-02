@@ -1,6 +1,9 @@
-import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+
 import { ChakraProvider} from "@chakra-ui/react";
-import NavBar from "./components/NavBar/NavBar";
+import { Layout } from "./layouts";
+import  { Home } from "./pages/Home";
+
+
 
 
 function App() {
@@ -12,8 +15,13 @@ function App() {
   return (
 
     <ChakraProvider>
-      <NavBar />
-      <ItemListContainer greeting={"Mi primer proyecto de React"} />
+
+      <Layout>
+
+          <Home />
+      </Layout>
+      
+      
 
     </ChakraProvider>
 

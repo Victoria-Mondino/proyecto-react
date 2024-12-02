@@ -15,15 +15,21 @@ import {
   Stack,
   useColorMode,
   Center,
+  
 } from '@chakra-ui/react'
-import { MoonIcon, SunIcon } from '@chakra-ui/icons'
-import CartWidet from '../CartWidget/CartWidget'
+import { MoonIcon, SunIcon, ChevronDownIcon } from '@chakra-ui/icons'
+
+import { CartWidet } from '../CartWidget/CartWidget';
+import { useGetAllCategories } from '../../hooks/useGetAllCategories';
 
 
 
-export default function Nav() {
-  const { colorMode, toggleColorMode } = useColorMode()
-  const { isOpen, onOpen, onClose } = useDisclosure()
+export const  NavBar= () => {
+  const { colorMode, toggleColorMode } = useColorMode();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {categories} = useGetAllCategories();
+
+
   return (
     <>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
@@ -32,9 +38,22 @@ export default function Nav() {
                     size={'sm'}
                     src={'https://i.etsystatic.com/9277560/r/il/290262/2460707032/il_fullxfull.2460707032_lqvo.jpg'}
                 />
+        <Menu>
+            <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+                    Categorias
+            </MenuButton>
+            <MenuList height={"300px"} overflowY={"scroll"}>
+              {
+                categories.map((category) => {
+                  return <MenuItem key={category.slug}>{category.name}</MenuItem>
+                  }    
+                )
+              }
+            </MenuList>
+        </Menu>
 
           <Flex alignItems={'center'}>
-            <CartWidet />  
+            <CartWidet />
             <Stack direction={'row'} spacing={7}>
               <Button onClick={toggleColorMode}>
                 {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
