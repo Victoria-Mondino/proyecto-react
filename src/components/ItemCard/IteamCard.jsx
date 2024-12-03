@@ -12,6 +12,7 @@ import {
   } from '@chakra-ui/react'
   import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs'
   import { FiShoppingCart } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 
 
   function Rating({ rating, numReviews }) {
@@ -44,7 +45,8 @@ import {
 
  export const IteamCard = ({data}) => {
   return (
-    <Flex  p={4} w="300px" alignItems="center" justifyContent="center">
+    <Link to={`/item/${data.id}`}>
+      <Flex  p={4} w="300px" alignItems="center" justifyContent="center">
     <Box
       bg={useColorModeValue('white', 'gray.800')}
       maxW="sm"
@@ -75,16 +77,6 @@ import {
             isTruncated>
             {data.name}
           </Box>
-          <Tooltip
-            label="Add to cart"
-            bg="white"
-            placement={'top'}
-            color={'gray.800'}
-            fontSize={'1.2em'}>
-            <chakra.a href={'#'} display={'flex'}>
-              <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
-            </chakra.a>
-          </Tooltip>
         </Flex>
 
         <Flex justifyContent="space-between" alignContent="center">
@@ -99,5 +91,6 @@ import {
       </Box>
     </Box>
   </Flex>
+    </Link>
 )
 }

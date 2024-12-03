@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 import {
   Box,
@@ -34,10 +35,11 @@ export const  NavBar= () => {
     <>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-        <Avatar
-                    size={'sm'}
-                    src={'https://i.etsystatic.com/9277560/r/il/290262/2460707032/il_fullxfull.2460707032_lqvo.jpg'}
-                />
+
+        <Box>
+          <Link to="/">Fusion</Link> 
+        </Box>
+
         <Menu>
             <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
                     Categorias
@@ -45,7 +47,7 @@ export const  NavBar= () => {
             <MenuList height={"300px"} overflowY={"scroll"}>
               {
                 categories.map((category) => {
-                  return <MenuItem key={category.slug}>{category.name}</MenuItem>
+                  return <MenuItem key={category.slug}><Link to={`/category/${category.slug}`}>{category.name} </Link></MenuItem>
                   }    
                 )
               }

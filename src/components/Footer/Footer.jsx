@@ -2,8 +2,8 @@ import React from "react";
 import "../Footer/footer.css";
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { BsFillPersonFill } from 'react-icons/bs'; // Ejemplo de icono de Bootstrap
- 
-const Footer = () => {
+
+ export const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -52,4 +52,3 @@ const Footer = () => {
   );
 };
 
-export default Footer;
